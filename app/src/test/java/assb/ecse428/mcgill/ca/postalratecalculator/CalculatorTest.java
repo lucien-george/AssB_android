@@ -34,5 +34,29 @@ public class CalculatorTest {
         assertEquals(cal.getLetterMailType("1","1","15","10"), Calculator.LetterMail.ERROR);
     }
 
+    @Test
+    public void getVolumetricEquivalentRegularTest() throws Exception{
+
+        float answer = 1;
+        Calculator cal = new Calculator();
+        assertEquals(cal.getVolumetricEquivalent("1","1","6000",Calculator.ShippingType.REGULAR), answer, 0.1);
+    }
+
+    @Test
+    public void getVolumetricEquivalentXpressTest() throws Exception{
+
+        float answer = 1;
+        Calculator cal = new Calculator();
+        assertEquals(cal.getVolumetricEquivalent("1","1","5000",Calculator.ShippingType.XPRESS), answer, 0.1);
+    }
+
+    @Test
+    public void getVolumetricEquivalentPriorityTest() throws Exception{
+
+        float answer = 1;
+        Calculator cal = new Calculator();
+        assertEquals(cal.getVolumetricEquivalent("1","1","5000",Calculator.ShippingType.PRIORITY), answer, 0.1);
+    }
+
 
 }
