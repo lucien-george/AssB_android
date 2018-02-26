@@ -9,6 +9,7 @@ import static org.junit.Assert.assertEquals;
  */
 
 public class CalculatorTest {
+
     @Test
     public void getLetterMailTypeTest() throws Exception{
 
@@ -17,4 +18,21 @@ public class CalculatorTest {
 
 
     }
+
+
+    @Test
+    public void getLetterMailTypeOtherTest() throws Exception{
+
+        Calculator cal = new Calculator();
+        assertEquals(cal.getLetterMailType("300","200","15","10"), Calculator.LetterMail.OTHER);
+    }
+
+    @Test
+    public void getLetterMailTypeErrorTest() throws Exception{
+
+        Calculator cal = new Calculator();
+        assertEquals(cal.getLetterMailType("1","1","15","10"), Calculator.LetterMail.ERROR);
+    }
+
+
 }
