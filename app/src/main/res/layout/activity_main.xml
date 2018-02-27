@@ -70,14 +70,14 @@
                     android:id="@+id/length"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Length"
+                    android:hint="Length (cm)"
                     android:inputType="numberDecimal"/>
 
                 <EditText
                     android:id="@+id/width"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Width"
+                    android:hint="Width (cm)"
                     android:inputType="numberDecimal"/>
 
             </LinearLayout>
@@ -94,14 +94,14 @@
                     android:id="@+id/height"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Height"
+                    android:hint="Height (cm)"
                     android:inputType="numberDecimal" />
 
                 <EditText
                     android:id="@+id/weight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Weight"
+                    android:hint="Weight (Kg)"
                     android:inputType="numberDecimal" />
 
             </LinearLayout>

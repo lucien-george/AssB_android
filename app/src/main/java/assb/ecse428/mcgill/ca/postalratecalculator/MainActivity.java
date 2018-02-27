@@ -322,6 +322,17 @@ public class MainActivity extends AppCompatActivity {
                 rate = 3.0 * mapCode(code);
             }
         }
+        else {
+            if(shippingType.equals(ShippingType.REGULAR)) {
+                rate = 15.0;
+            }
+            else if (shippingType.equals(ShippingType.XPRESS)) {
+                rate = 30.0;
+            }
+            else if (shippingType.equals(ShippingType.PRIORITY)) {
+                rate = 45.0;
+            }
+        }
         return rate;
     }
 
