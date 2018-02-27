@@ -9,7 +9,6 @@ public class Calculator {
     private LetterMail letterMail;
     private Stamp stamp;
     private ShippingType shippingType;
-    private PackageType packageType;
     private float rate;
     private float equivalence;
     private RateReader rateReader;
@@ -28,14 +27,6 @@ public class Calculator {
     public enum Stamp {
         BOOKLET , METER_POSTAL_INDICIA , SINGLE_STAMP
     }
-
-    public enum PackageType {
-        LETTERMAIL , PARCEL
-    }
-
-    //TODO: Determine price for shipping type
-    //TODO: Determine pricing for Parcel
-    //TODO: Determine pricing from source to destination
     public LetterMail getLetterMailType(String length , String width , String height , String weight) {
         int length_int = Integer.parseInt(length);
         int width_int = Integer.parseInt(width);
@@ -47,9 +38,9 @@ public class Calculator {
                 && (weight_int >= 2 && weight_int <= 50)) {
             letterMail = LetterMail.LETTER;
         }
-        else if ((length_int >= 245 && length_int <= 380)
-                && (width_int >= 156 && width_int <= 270)
-                && (height_int >= 5 && height_int <= 20)
+        else if ((length_int >= 140 && length_int <= 380)
+                && (width_int >= 90 && width_int <= 270)
+                && (height_int >= 0.18 && height_int <= 20)
                 && (weight_int >= 3 && weight_int <= 500)) {
             letterMail = LetterMail.OTHER;
         }
@@ -77,7 +68,6 @@ public class Calculator {
     public float getPostalRateLetterMail(String weight , LetterMail letterMail , Stamp stamp , ShippingType shippingType){
         int weight_int = Integer.parseInt(weight);
         if(shippingType.equals(ShippingType.REGULAR)) {
-//            equivalence = getVolumetricEquivalent(length , width , height , shippingType);
             if (letterMail.equals(LetterMail.LETTER)) {
                 if(stamp.equals(Stamp.BOOKLET)) {
                     if (weight_int <= 30) {
@@ -336,13 +326,5 @@ public class Calculator {
 
         weight_checked = true;
         return weight_checked;
-    }
-
-    public boolean checkPostType (String type) {
-        boolean type_checked = false;
-        if (type.equalsIgnoreCase("Regular") || type.equalsIgnoreCase("Xpress") || type.equalsIgnoreCase("Priority")) {
-            type_checked = true;
-        }
-        return type_checked;
     }
 }

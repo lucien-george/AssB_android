@@ -19,33 +19,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-
-        <RadioGroup
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/package_type">
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:id="@+id/letter_rb"
-                android:text="Letter or Document"
-                android:checked="true"/>
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:id="@+id/parcel_rb"
-                android:text="Parcel"
-                android:checked="false"/>
-        </RadioGroup>
+            android:text="Letter dimensions: Min length: 140, Max length 245, Min width: 90 , Max width: 156, Min height: 0.18, Max height: 5, Min weight: 2, Max weight: 50 \n\nOther dimensions: Min length: 140, Max length 380, Min width: 90 , Max width: 270, Min height: 0.18, Max height: 20, Min weight: 3, Max weight: 500"/>
 
         <Space
             android:layout_width="wrap_content"

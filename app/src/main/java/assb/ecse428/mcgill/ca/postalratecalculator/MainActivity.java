@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import assb.ecse428.mcgill.ca.postalratecalculator.Calculator.*;
@@ -32,9 +33,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText weight_et;
     private RadioGroup type_group;
     private RadioGroup stamp_group;
-    private RadioGroup package_group;
-    private RadioButton letter_btn;
-    private RadioButton parcel_btn;
     private RadioButton regular_btn;
     private RadioButton xpress_btn;
     private RadioButton priority_btn;
@@ -42,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton meter_postal;
     private RadioButton single_stamp;
     private TextView rate_tv;
-    private ProgressDialog progressDialog;
 
     private int selected_type , selected_stamp , selected_package , selected_letterMail;
     private float price;
@@ -50,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
     private ShippingType shippingType;
     private LetterMail letterMail;
     private Stamp stamp;
-    private PackageType packageType;
     private Calculator calculator;
     private ArrayList<RateReader> rateReaderArrayList;
     private ArrayList<CodeReader> codeReaderArrayList;
@@ -85,63 +81,11 @@ public class MainActivity extends AppCompatActivity {
         regular_btn = (RadioButton) findViewById(R.id.regular);
         xpress_btn = (RadioButton) findViewById(R.id.xpress);
         priority_btn = (RadioButton) findViewById(R.id.priority);
-        package_group = (RadioGroup) findViewById(R.id.package_type);
-        letter_btn = (RadioButton) findViewById(R.id.letter_rb);
-        parcel_btn = (RadioButton) findViewById(R.id.parcel_rb);
         rate_tv = (TextView) findViewById(R.id.rate_tv);
         codeReader = new CodeReader();
         rateReader = new RateReader();
         codeReaderArrayList = new ArrayList<>();
         rateReaderArrayList = new ArrayList<>();
-        progressDialog = new ProgressDialog(this);
-
-    }
-
-    // action handler for button click
-    public void getRate(View view) {
-        progressDialog.setMessage("Please wait, fetching data...");
-        progressDialog.show();
-        selected_type = type_group.getCheckedRadioButtonId();
-        if(selected_type == regular_btn.getId()) {
-            shippingType = ShippingType.REGULAR;
-        }
-        else if (selected_type == xpress_btn.getId()) {
-            shippingType = ShippingType.XPRESS;
-        }
-        else {
-            shippingType = ShippingType.PRIORITY;
-        }
-        selected_stamp = stamp_group.getCheckedRadioButtonId();
-        if(selected_stamp == booklet.getId()) {
-            stamp = Stamp.BOOKLET;
-        }
-        else if (selected_stamp == meter_postal.getId()) {
-            stamp = Stamp.METER_POSTAL_INDICIA;
-        }
-        else {
-            stamp = Stamp.SINGLE_STAMP;
-        }
-        selected_package = package_group.getCheckedRadioButtonId();
-        if(selected_package == letter_btn.getId()) {
-            packageType = PackageType.LETTERMAIL;
-            letterMail = calculator.getLetterMailType(length_et.getText().toString() , width_et.getText().toString() , height_et.getText().toString() , weight_et.getText().toString());
-            if(letterMail.equals(LetterMail.ERROR)) {
-                showAlertDialog("Error" , "Dimension parameters do not match neither LETTER nor OTHER");
-            }
-        }
-        else {
-            packageType = PackageType.PARCEL;
-        }
-        if(packageType.equals(PackageType.LETTERMAIL)) {
-            str_rate = String.valueOf(calculator.getPostalRateLetterMail(weight_et.getText().toString() , letterMail , stamp , shippingType));
-        }
-        else if (packageType.equals(PackageType.PARCEL))
-        {
-            readDataCode();
-            str_rate = String.valueOf(readDataRate());
-        }
-        progressDialog.dismiss();
-        rate_tv.setText("Your rate is: $" + str_rate);
 
     }
 
@@ -156,6 +100,57 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         builder.create().show();
+    }
+
+    public boolean check_inputs() {
+        boolean checked = false;
+        String str_length = length_et.getText().toString();
+        String str_width = width_et.getText().toString();
+        String str_height = height_et.getText().toString();
+        String str_weight = weight_et.getText().toString();
+        String str_from = from_et.getText().toString();
+        String str_to = to_et.getText().toString();
+        if (calculator.checkDimensions(str_length , str_width , str_height) && calculator.checkWeight(str_weight) && calculator.checkPostalCode(str_from) && calculator.checkPostalCode(str_to)) {
+            checked = true;
+        }
+        return checked;
+    }
+
+    // action handler for button click
+    public void getRate(View view) {
+        if (check_inputs()) {
+            String str_length = length_et.getText().toString();
+            String str_width = width_et.getText().toString();
+            String str_height = height_et.getText().toString();
+            String str_weight = weight_et.getText().toString();
+            selected_type = type_group.getCheckedRadioButtonId();
+            if(selected_type == regular_btn.getId()) {
+                shippingType = ShippingType.REGULAR;
+            }
+            else if (selected_type == xpress_btn.getId()) {
+                shippingType = ShippingType.XPRESS;
+            }
+            else {
+                shippingType = ShippingType.PRIORITY;
+            }
+            selected_stamp = stamp_group.getCheckedRadioButtonId();
+            if(selected_stamp == booklet.getId()) {
+                stamp = Stamp.BOOKLET;
+            }
+            else if (selected_stamp == meter_postal.getId()) {
+                stamp = Stamp.METER_POSTAL_INDICIA;
+            }
+            else {
+                stamp = Stamp.SINGLE_STAMP;
+            }
+            letterMail = calculator.getLetterMailType(str_length , str_width , str_height , str_weight);
+            readDataCode();
+            str_rate = String.valueOf(new DecimalFormat("###.##").format(calculator.getPostalRateLetterMail(weight_et.getText().toString() , letterMail , stamp , shippingType) + readDataRate()));
+            rate_tv.setText("Your rate is: $" + str_rate);
+        }
+        else {
+            showAlertDialog("Error" , "Invalid input format. Please try again.");
+        }
     }
 
     private Double readDataRate() {
@@ -272,9 +267,7 @@ public class MainActivity extends AppCompatActivity {
                 if(rate != 0.0) {
                     break;
                 }
-//                Log.d("MyActivity" , "Just created: " + rateReader);
             }
-//            Toast.makeText(this,"Rate is: " + rate , Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
             Log.wtf("MyActivity" , "Error reading data file on line " + line , e);
             e.printStackTrace();
@@ -302,7 +295,6 @@ public class MainActivity extends AppCompatActivity {
                 if(!code.equals("")) {
                     break;
                 }
-//                Log.d("MyActivity" , "Just created: " + codeReader);
             }
         } catch (IOException e) {
             Log.wtf("MyActivity" , "Error reading data file on line " + line , e);
@@ -311,7 +303,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public Double getRate() {
-//        Toast.makeText(this , "Get rate method accessed" , Toast.LENGTH_SHORT).show();
         String length = length_et.getText().toString();
         String width = width_et.getText().toString();
         String height = height_et.getText().toString();
@@ -330,7 +321,6 @@ public class MainActivity extends AppCompatActivity {
             else if (shippingType.equals(ShippingType.PRIORITY)) {
                 rate = 3.0 * mapCode(code);
             }
-//            Toast.makeText(this , "Rate is: " + rate_tv, Toast.LENGTH_SHORT).show();
         }
         return rate;
     }
@@ -485,8 +475,10 @@ public class MainActivity extends AppCompatActivity {
             String data_to = codeReader.getTo();
             if ((Character.compare(first_to , at) == 0) && data_to.equals(sub)) {
                 code = codeReader.getCode();
-//                Toast.makeText(this , "Code is: " + code , Toast.LENGTH_SHORT).show();
                 break;
+            }
+            else {
+                code = "H5";
             }
         }
         return code;
