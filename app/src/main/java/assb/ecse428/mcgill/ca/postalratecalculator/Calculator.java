@@ -12,9 +12,11 @@ public class Calculator {
     private PackageType packageType;
     private float rate;
     private float equivalence;
+    private RateReader rateReader;
 
     public Calculator() {
     }
+
     public enum ShippingType {
         REGULAR , XPRESS , PRIORITY
     }
@@ -72,13 +74,10 @@ public class Calculator {
         }
     }
 
-    public float getPostalRate(String length , String width, String height , String weight , PackageType packageType , LetterMail letterMail , Stamp stamp , ShippingType shippingType){
+    public float getPostalRateLetterMail(String weight , LetterMail letterMail , Stamp stamp , ShippingType shippingType){
         int weight_int = Integer.parseInt(weight);
-        if(packageType.equals(PackageType.PARCEL)) {
-            equivalence = getVolumetricEquivalent(length , width , height , shippingType);
-
-        }
-        else if (packageType.equals(PackageType.LETTERMAIL)) {
+        if(shippingType.equals(ShippingType.REGULAR)) {
+//            equivalence = getVolumetricEquivalent(length , width , height , shippingType);
             if (letterMail.equals(LetterMail.LETTER)) {
                 if(stamp.equals(Stamp.BOOKLET)) {
                     if (weight_int <= 30) {
@@ -138,6 +137,134 @@ public class Calculator {
                     }
                     else if(weight_int > 400 && weight_int <= 500) {
                         rate = 4.87f;
+                    }
+                }
+            }
+        }
+        else if (shippingType.equals(ShippingType.XPRESS)) {
+            if (letterMail.equals(LetterMail.LETTER)) {
+                if(stamp.equals(Stamp.BOOKLET)) {
+                    if (weight_int <= 30) {
+                        rate = 2.00f * 0.85f;
+                    }
+                    else if(weight_int > 30 && weight_int <= 50) {
+                        rate = 2.00f * 1.20f;
+                    }
+                }
+                else if (stamp.equals(Stamp.METER_POSTAL_INDICIA)) {
+                    if (weight_int <= 30) {
+                        rate = 2.00f * 0.82f;
+                    }
+                    else if(weight_int > 30 && weight_int <= 50) {
+                        rate = 2.00f * 1.19f;
+                    }
+                }
+                else if (stamp.equals(Stamp.SINGLE_STAMP)) {
+                    if (weight_int <= 30) {
+                        rate = 2.00f * 1.00f;
+                    }
+                    else if(weight_int > 30 && weight_int <= 50) {
+                        rate = 2.00f * 1.20f;
+                    }
+                }
+            }
+            else if (letterMail.equals(LetterMail.OTHER)) {
+                if(stamp.equals(Stamp.BOOKLET) || stamp.equals(Stamp.SINGLE_STAMP)) {
+                    if (weight_int <= 100) {
+                        rate = 2.00f * 1.80f;
+                    }
+                    else if(weight_int > 100 && weight_int <= 200) {
+                        rate = 2.00f * 2.95f;
+                    }
+                    else if(weight_int > 200 && weight_int <= 300) {
+                        rate = 2.00f * 4.10f;
+                    }
+                    else if(weight_int > 300 && weight_int <= 400) {
+                        rate = 2.00f * 4.70f;
+                    }
+                    else if(weight_int > 400 && weight_int <= 500) {
+                        rate = 2.00f * 5.05f;
+                    }
+                }
+                else if(stamp.equals(Stamp.METER_POSTAL_INDICIA)) {
+                    if (weight_int <= 100) {
+                        rate = 2.00f * 1.76f;
+                    }
+                    else if(weight_int > 100 && weight_int <= 200) {
+                        rate =  2.00f * 2.85f;
+                    }
+                    else if(weight_int > 200 && weight_int <= 300) {
+                        rate =  2.00f * 4.00f;
+                    }
+                    else if(weight_int > 300 && weight_int <= 400) {
+                        rate = 2.00f * 4.54f;
+                    }
+                    else if(weight_int > 400 && weight_int <= 500) {
+                        rate = 2.00f * 4.87f;
+                    }
+                }
+            }
+        }
+        else if (shippingType.equals(ShippingType.PRIORITY)) {
+            if (letterMail.equals(LetterMail.LETTER)) {
+                if(stamp.equals(Stamp.BOOKLET)) {
+                    if (weight_int <= 30) {
+                        rate = 2.00f * 0.85f;
+                    }
+                    else if(weight_int > 30 && weight_int <= 50) {
+                        rate = 2.00f * 1.20f;
+                    }
+                }
+                else if (stamp.equals(Stamp.METER_POSTAL_INDICIA)) {
+                    if (weight_int <= 30) {
+                        rate = 2.00f * 0.82f;
+                    }
+                    else if(weight_int > 30 && weight_int <= 50) {
+                        rate = 2.00f * 1.19f;
+                    }
+                }
+                else if (stamp.equals(Stamp.SINGLE_STAMP)) {
+                    if (weight_int <= 30) {
+                        rate = 2.00f * 1.00f;
+                    }
+                    else if(weight_int > 30 && weight_int <= 50) {
+                        rate = 2.00f * 1.20f;
+                    }
+                }
+            }
+            else if (letterMail.equals(LetterMail.OTHER)) {
+                if(stamp.equals(Stamp.BOOKLET) || stamp.equals(Stamp.SINGLE_STAMP)) {
+                    if (weight_int <= 100) {
+                        rate = 3.00f * 1.80f;
+                    }
+                    else if(weight_int > 100 && weight_int <= 200) {
+                        rate = 3.00f * 2.95f;
+                    }
+                    else if(weight_int > 200 && weight_int <= 300) {
+                        rate = 3.00f * 4.10f;
+                    }
+                    else if(weight_int > 300 && weight_int <= 400) {
+                        rate = 3.00f * 4.70f;
+                    }
+                    else if(weight_int > 400 && weight_int <= 500) {
+                        rate = 3.00f * 5.05f;
+                    }
+                }
+                else if(stamp.equals(Stamp.METER_POSTAL_INDICIA)) {
+                    if (weight_int <= 100) {
+                        rate = 3.00f * 1.76f;
+                    }
+                    else if(weight_int > 100 && weight_int <= 200) {
+                        rate =  3.00f * 2.85f;
+                    }
+                    else if(weight_int > 200 && weight_int <= 300) {
+                        rate =  3.00f * 4.00f;
+                    }
+                    else if(weight_int > 300 && weight_int <= 400) {
+                        rate = 3.00f * 4.54f;
+                    }
+                    else if(weight_int > 400 && weight_int <= 500) {
+                        rate = 3.00f * 4.87f;
                     }
                 }
             }
