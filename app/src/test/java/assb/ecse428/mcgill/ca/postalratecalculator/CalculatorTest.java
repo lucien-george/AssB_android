@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Created by User on 2/26/2018.
+ * Created by Michael on 2/26/2018.
  */
 
 public class CalculatorTest {
@@ -56,6 +56,24 @@ public class CalculatorTest {
         float answer = 1;
         Calculator cal = new Calculator();
         assertEquals(cal.getVolumetricEquivalent("1","1","5000",Calculator.ShippingType.PRIORITY), answer, 0.1);
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest1() throws Exception{
+
+        //ShippingType -- Regular
+        //LetterMail  --  Letter
+        //Stamp -- Booklet
+
+        Float answer = 0.85f;
+        Calculator cal = new Calculator();
+       assertEquals(
+        cal.getPostalRateLetterMail( "1",Calculator.LetterMail.LETTER ,Calculator.Stamp.BOOKLET,Calculator.ShippingType.REGULAR) ,
+        answer,
+        0.1
+        );
+
+
     }
 
 
