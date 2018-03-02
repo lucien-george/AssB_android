@@ -395,7 +395,24 @@ public class CalculatorTest {
 
     }
 
+    @Test
+    public void getPostalRateLetterMailTest18() throws Exception{
 
+        //ShippingType -- XPRESS
+        //LetterMail  --  Letter
+        //Stamp -- Booklet
+        // 30 <= Weight <= 50
+
+        Float answer = 2.00f * 1.20f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "40",Calculator.LetterMail.LETTER ,Calculator.Stamp.BOOKLET,Calculator.ShippingType.XPRESS) ,
+                answer,
+                0.1
+        );
+
+
+    }
 
 
 
