@@ -1032,4 +1032,21 @@ public class CalculatorTest {
 
     /*End of Valid test for checkPostalCode*/
 
+    @Test
+    public void checkDimensionsTest() throws Exception {
+
+        boolean answer = true;
+        Calculator cal = new Calculator();
+        assertEquals(cal.checkDimensions("10","12", "12"), answer);
+    }
+
+    @Test
+    public void checkWeight() throws Exception {
+
+        boolean answer = true;
+        Calculator cal = new Calculator();
+        assertEquals(cal.checkWeight("10"), answer);
+    }
+
+
 }
