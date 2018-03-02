@@ -76,6 +76,7 @@ public class Calculator {
                     else if(weight_int > 30 && weight_int <= 50) {
                         rate = 1.20f;
                     }
+
                 }
                 else if (stamp.equals(Stamp.METER_POSTAL_INDICIA)) {
                     if (weight_int <= 30) {
@@ -92,6 +93,10 @@ public class Calculator {
                     else if(weight_int > 30 && weight_int <= 50) {
                         rate = 1.20f;
                     }
+                }
+
+                if(weight_int == 0){
+                    rate = 0;
                 }
             }
             else if (letterMail.equals(LetterMail.OTHER)) {
@@ -129,6 +134,11 @@ public class Calculator {
                         rate = 4.87f;
                     }
                 }
+
+                if(weight_int == 0){
+                    rate = 0;
+                }
+
             }
         }
         else if (shippingType.equals(ShippingType.XPRESS)) {
@@ -156,6 +166,10 @@ public class Calculator {
                     else if(weight_int > 30 && weight_int <= 50) {
                         rate = 2.00f * 1.20f;
                     }
+                }
+
+                if(weight_int == 0){
+                    rate = 0;
                 }
             }
             else if (letterMail.equals(LetterMail.OTHER)) {
@@ -193,7 +207,14 @@ public class Calculator {
                         rate = 2.00f * 4.87f;
                     }
                 }
+
+
+                if(weight_int == 0){
+                    rate = 0;
+                }
             }
+
+
         }
         else if (shippingType.equals(ShippingType.PRIORITY)) {
             if (letterMail.equals(LetterMail.LETTER)) {
@@ -220,6 +241,10 @@ public class Calculator {
                     else if(weight_int > 30 && weight_int <= 50) {
                         rate = 2.00f * 1.20f;
                     }
+                }
+
+                if(weight_int == 0){
+                    rate = 0;
                 }
             }
             else if (letterMail.equals(LetterMail.OTHER)) {
@@ -256,6 +281,10 @@ public class Calculator {
                     else if(weight_int > 400 && weight_int <= 500) {
                         rate = 3.00f * 4.87f;
                     }
+                }
+
+                if(weight_int == 0){
+                    rate = 0;
                 }
             }
         }
