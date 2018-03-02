@@ -1261,10 +1261,7 @@ public class CalculatorTest {
     }
 
 
-
-
-
-    /*End of Invalid test for checkPostalCode*/
+    /*End of Invalid test for getPostalRateLetterMailError*/
 
     /*Start of Valid test for checkPostalCode*/
 
@@ -1293,7 +1290,34 @@ public class CalculatorTest {
 
     /*End of Valid test for checkPostalCode*/
 
+    /*Start of Invalid test for checkPostalCode*/
+    @Test
+    public void checkPostalCodeErrorTest1() throws Exception {
 
+        boolean answer = false;
+        Calculator cal = new Calculator();
+        assertEquals(cal.checkPostalCode(""), answer);
+
+
+
+    }
+
+    @Test
+    public void checkPostalCodeErrorTest2() throws Exception {
+
+        boolean answer = false;
+        Calculator cal = new Calculator();
+        assertEquals(cal.checkPostalCode("H2C4P9A"), answer);
+
+
+
+    }
+
+
+
+    /*End of Invalid test for checkPostalCode*/
+
+    /*Start of Valid test for checkDimensionsTest*/
     @Test
     public void checkDimensionsTest() throws Exception {
 
@@ -1302,6 +1326,13 @@ public class CalculatorTest {
         assertEquals(cal.checkDimensions("10","12", "12"), answer);
     }
 
+    /*End of Valid test for checkDimensionsTest*/
+
+    /*Start of Invalid test for checkDimensionsTest*/
+
+    /*End of Invalid test for checkDimensionsTest*/
+
+    /*Start of Valid test for checkWeight*/
     @Test
     public void checkWeight() throws Exception {
 
@@ -1309,6 +1340,7 @@ public class CalculatorTest {
         Calculator cal = new Calculator();
         assertEquals(cal.checkWeight("10"), answer);
     }
+    /*End of Valid test for checkWeight*/
 
 
 }
