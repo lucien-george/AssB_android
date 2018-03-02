@@ -414,6 +414,587 @@ public class CalculatorTest {
 
     }
 
+    @Test
+    public void getPostalRateLetterMailTest19() throws Exception{
+
+        //ShippingType -- XPRESS
+        //LetterMail  --  Letter
+        //Stamp -- METER_POSTAL_INDICIA
+        // Weight <= 30
+
+        Float answer =  2.00f * 0.82f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "10",Calculator.LetterMail.LETTER ,Calculator.Stamp.METER_POSTAL_INDICIA,Calculator.ShippingType.XPRESS) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest20() throws Exception{
+
+        //ShippingType -- XPRESS
+        //LetterMail  --  Letter
+        //Stamp -- METER_POSTAL_INDICIA
+        // 30 <= Weight <= 50
+
+        Float answer =  2.00f * 1.19f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "40",Calculator.LetterMail.LETTER ,Calculator.Stamp.METER_POSTAL_INDICIA,Calculator.ShippingType.XPRESS) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest21() throws Exception{
+
+        //ShippingType -- XPRESS
+        //LetterMail  --  Letter
+        //Stamp -- SINGLE_STAMP
+        // Weight <= 30
+
+        Float answer =  2.00f * 1.00f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "10",Calculator.LetterMail.LETTER ,Calculator.Stamp.SINGLE_STAMP,Calculator.ShippingType.XPRESS) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest22() throws Exception{
+
+        //ShippingType -- XPRESS
+        //LetterMail  --  Letter
+        //Stamp -- SINGLE_STAMP
+        // 30 <= Weight <= 50
+
+        Float answer =  2.00f * 1.20f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "40",Calculator.LetterMail.LETTER ,Calculator.Stamp.SINGLE_STAMP,Calculator.ShippingType.XPRESS) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest23() throws Exception{
+
+        //ShippingType -- XPRESS
+        //LetterMail  --  OTHER
+        //Stamp -- BOOKLET
+        // Weight = 80
+
+        Float answer =  2.00f * 1.80f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "80",Calculator.LetterMail.OTHER ,Calculator.Stamp.BOOKLET,Calculator.ShippingType.XPRESS) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest24() throws Exception{
+
+        //ShippingType -- XPRESS
+        //LetterMail  --  OTHER
+        //Stamp -- BOOKLET
+        // Weight = 150
+
+        Float answer =  2.00f * 2.95f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "150",Calculator.LetterMail.OTHER ,Calculator.Stamp.BOOKLET,Calculator.ShippingType.XPRESS) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest25() throws Exception{
+
+        //ShippingType -- XPRESS
+        //LetterMail  --  OTHER
+        //Stamp -- BOOKLET
+        // Weight = 250
+
+        Float answer =  2.00f * 4.10f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "250",Calculator.LetterMail.OTHER ,Calculator.Stamp.BOOKLET,Calculator.ShippingType.XPRESS) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest26() throws Exception{
+
+        //ShippingType -- XPRESS
+        //LetterMail  --  OTHER
+        //Stamp -- BOOKLET
+        // Weight = 350
+
+        Float answer =  2.00f * 4.70f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "350",Calculator.LetterMail.OTHER ,Calculator.Stamp.BOOKLET,Calculator.ShippingType.XPRESS) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest27() throws Exception{
+
+        //ShippingType -- XPRESS
+        //LetterMail  --  OTHER
+        //Stamp -- BOOKLET
+        // Weight = 450
+
+        Float answer =  2.00f * 5.05f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "450",Calculator.LetterMail.OTHER ,Calculator.Stamp.BOOKLET,Calculator.ShippingType.XPRESS) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest28() throws Exception{
+
+        //ShippingType -- XPRESS
+        //LetterMail  --  OTHER
+        //Stamp -- METER_POSTAL_INDICIA
+        // Weight = 80
+
+        Float answer =  2.00f * 1.76f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "80",Calculator.LetterMail.OTHER ,Calculator.Stamp.METER_POSTAL_INDICIA,Calculator.ShippingType.XPRESS) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest29() throws Exception{
+
+        //ShippingType -- XPRESS
+        //LetterMail  --  OTHER
+        //Stamp -- METER_POSTAL_INDICIA
+        // Weight = 150
+
+        Float answer =  2.00f * 2.85f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "150",Calculator.LetterMail.OTHER ,Calculator.Stamp.METER_POSTAL_INDICIA,Calculator.ShippingType.XPRESS) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest30() throws Exception{
+
+        //ShippingType -- XPRESS
+        //LetterMail  --  OTHER
+        //Stamp -- METER_POSTAL_INDICIA
+        // Weight = 250
+
+        Float answer =  2.00f * 4.00f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "250",Calculator.LetterMail.OTHER ,Calculator.Stamp.METER_POSTAL_INDICIA,Calculator.ShippingType.XPRESS) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest31() throws Exception{
+
+        //ShippingType -- XPRESS
+        //LetterMail  --  OTHER
+        //Stamp -- METER_POSTAL_INDICIA
+        // Weight = 350
+
+        Float answer =  2.00f * 4.54f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "350",Calculator.LetterMail.OTHER ,Calculator.Stamp.METER_POSTAL_INDICIA,Calculator.ShippingType.XPRESS) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest32() throws Exception{
+
+        //ShippingType -- XPRESS
+        //LetterMail  --  OTHER
+        //Stamp -- METER_POSTAL_INDICIA
+        // Weight = 450
+
+        Float answer =  2.00f * 4.87f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "450",Calculator.LetterMail.OTHER ,Calculator.Stamp.METER_POSTAL_INDICIA,Calculator.ShippingType.XPRESS) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+
+
+///lfksehwelfksdlfk
+
+    @Test
+    public void getPostalRateLetterMailTest33() throws Exception{
+
+        //ShippingType -- PRIORITY
+        //LetterMail  --  Letter
+        //Stamp -- Booklet
+        //Weight <= 30
+
+        Float answer = 2.00f * 0.85f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "1",Calculator.LetterMail.LETTER ,Calculator.Stamp.BOOKLET,Calculator.ShippingType.PRIORITY) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+
+
+    @Test
+    public void getPostalRateLetterMailTest34() throws Exception{
+
+        //ShippingType -- PRIORITY
+        //LetterMail  --  Letter
+        //Stamp -- METER_POSTAL_INDICIA
+        // Weight <= 30
+
+        Float answer = 2.00f * 0.82f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "10",Calculator.LetterMail.LETTER ,Calculator.Stamp.METER_POSTAL_INDICIA,Calculator.ShippingType.PRIORITY) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest35() throws Exception{
+
+        //ShippingType -- PRIORITY
+        //LetterMail  --  Letter
+        //Stamp -- METER_POSTAL_INDICIA
+        // 30 <= Weight <= 50
+
+        Float answer =   2.00f * 1.19f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "40",Calculator.LetterMail.LETTER ,Calculator.Stamp.METER_POSTAL_INDICIA,Calculator.ShippingType.PRIORITY) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+
+    @Test
+    public void getPostalRateLetterMailTest36() throws Exception{
+
+        //ShippingType -- PRIORITY
+        //LetterMail  --  Letter
+        //Stamp -- SINGLE_STAMP
+        // Weight <= 30
+
+        Float answer =  2.00f * 1.00f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "10",Calculator.LetterMail.LETTER ,Calculator.Stamp.SINGLE_STAMP,Calculator.ShippingType.PRIORITY) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest37() throws Exception{
+
+        //ShippingType -- PRIORITY
+        //LetterMail  --  Letter
+        //Stamp -- SINGLE_STAMP
+        // 30 <= Weight <= 50
+
+        Float answer =  2.00f * 1.20f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "40",Calculator.LetterMail.LETTER ,Calculator.Stamp.SINGLE_STAMP,Calculator.ShippingType.PRIORITY) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest38() throws Exception{
+
+        //ShippingType -- PRIORITY
+        //LetterMail  --  OTHER
+        //Stamp -- BOOKLET
+        // Weight = 80
+
+        Float answer =  3.00f * 1.80f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "80",Calculator.LetterMail.OTHER ,Calculator.Stamp.BOOKLET,Calculator.ShippingType.PRIORITY) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest39() throws Exception{
+
+        //ShippingType -- PRIORITY
+        //LetterMail  --  OTHER
+        //Stamp -- BOOKLET
+        // Weight = 150
+
+        Float answer =  3.00f * 2.95f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "150",Calculator.LetterMail.OTHER ,Calculator.Stamp.BOOKLET,Calculator.ShippingType.PRIORITY) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest40() throws Exception{
+
+        //ShippingType -- PRIORITY
+        //LetterMail  --  OTHER
+        //Stamp -- BOOKLET
+        // Weight = 250
+
+        Float answer = 3.00f * 4.10f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "250",Calculator.LetterMail.OTHER ,Calculator.Stamp.BOOKLET,Calculator.ShippingType.PRIORITY) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest41() throws Exception{
+
+        //ShippingType -- PRIORITY
+        //LetterMail  --  OTHER
+        //Stamp -- BOOKLET
+        // Weight = 350
+
+        Float answer =  3.00f * 4.70f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "350",Calculator.LetterMail.OTHER ,Calculator.Stamp.BOOKLET,Calculator.ShippingType.PRIORITY) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest42() throws Exception{
+
+        //ShippingType -- PRIORITY
+        //LetterMail  --  OTHER
+        //Stamp -- BOOKLET
+        // Weight = 450
+
+        Float answer = 3.00f * 5.05f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "450",Calculator.LetterMail.OTHER ,Calculator.Stamp.BOOKLET,Calculator.ShippingType.PRIORITY) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest43() throws Exception{
+
+        //ShippingType -- PRIORITY
+        //LetterMail  --  OTHER
+        //Stamp -- METER_POSTAL_INDICIA
+        // Weight = 80
+
+        Float answer =  3.00f * 1.76f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "80",Calculator.LetterMail.OTHER ,Calculator.Stamp.METER_POSTAL_INDICIA,Calculator.ShippingType.PRIORITY) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest44() throws Exception{
+
+        //ShippingType -- PRIORITY
+        //LetterMail  --  OTHER
+        //Stamp -- METER_POSTAL_INDICIA
+        // Weight = 150
+
+        Float answer =  3.00f * 2.85f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "150",Calculator.LetterMail.OTHER ,Calculator.Stamp.METER_POSTAL_INDICIA,Calculator.ShippingType.PRIORITY) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest45() throws Exception{
+
+        //ShippingType -- PRIORITY
+        //LetterMail  --  OTHER
+        //Stamp -- METER_POSTAL_INDICIA
+        // Weight = 250
+
+        Float answer =  3.00f * 4.00f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "250",Calculator.LetterMail.OTHER ,Calculator.Stamp.METER_POSTAL_INDICIA,Calculator.ShippingType.PRIORITY) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest46() throws Exception{
+
+        //ShippingType -- PRIORITY
+        //LetterMail  --  OTHER
+        //Stamp -- METER_POSTAL_INDICIA
+        // Weight = 350
+
+        Float answer =  3.00f * 4.54f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "350",Calculator.LetterMail.OTHER ,Calculator.Stamp.METER_POSTAL_INDICIA,Calculator.ShippingType.PRIORITY) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+    @Test
+    public void getPostalRateLetterMailTest47() throws Exception{
+
+        //ShippingType -- PRIORITY
+        //LetterMail  --  OTHER
+        //Stamp -- METER_POSTAL_INDICIA
+        // Weight = 450
+
+        Float answer =  3.00f * 4.87f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "450",Calculator.LetterMail.OTHER ,Calculator.Stamp.METER_POSTAL_INDICIA,Calculator.ShippingType.PRIORITY) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+
+    @Test
+    public void getPostalRateLetterMailTest48() throws Exception{
+
+        //ShippingType -- PRIORITY
+        //LetterMail  --  Letter
+        //Stamp -- Booklet
+        // 30 <= Weight <= 50
+
+        Float answer =  2.00f * 1.20f;
+        Calculator cal = new Calculator();
+        assertEquals(
+                cal.getPostalRateLetterMail( "40",Calculator.LetterMail.LETTER ,Calculator.Stamp.BOOKLET,Calculator.ShippingType.PRIORITY) ,
+                answer,
+                0.1
+        );
+
+
+    }
+
+
+
+
 
 
 
