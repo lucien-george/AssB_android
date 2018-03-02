@@ -3,7 +3,7 @@ package assb.ecse428.mcgill.ca.postalratecalculator;
 import org.junit.Test;
 
 /**
- * Created by User on 3/2/2018.
+ * Created by Michael on 3/2/2018.
  */
 
 public class MainActivityTest {
