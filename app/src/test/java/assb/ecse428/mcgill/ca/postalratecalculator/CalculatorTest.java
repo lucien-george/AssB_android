@@ -10,6 +10,7 @@ import static org.junit.Assert.assertEquals;
 
 public class CalculatorTest {
 
+    /* Start of Valid test for getLetterMailType*/
     @Test
     public void getLetterMailTypeTest() throws Exception{
 
@@ -27,6 +28,10 @@ public class CalculatorTest {
         assertEquals(cal.getLetterMailType("300","200","15","10"), Calculator.LetterMail.OTHER);
     }
 
+    /* End of Valid test for getLetterMailType*/
+
+      /*Start of Invalid test for getLetterMailType*/
+
     @Test
     public void getLetterMailTypeErrorTest() throws Exception{
 
@@ -34,6 +39,9 @@ public class CalculatorTest {
         assertEquals(cal.getLetterMailType("1","1","15","10"), Calculator.LetterMail.ERROR);
     }
 
+    /*End of Invalid test for getLetterMailType*/
+
+    /*Start of Valid test for getVolumetricEquivalentRegular*/
     @Test
     public void getVolumetricEquivalentRegularTest() throws Exception{
 
@@ -57,6 +65,9 @@ public class CalculatorTest {
         Calculator cal = new Calculator();
         assertEquals(cal.getVolumetricEquivalent("1","1","5000",Calculator.ShippingType.PRIORITY), answer, 0.1);
     }
+     /*End of Valid test for getVolumetricEquivalentRegular*/
+
+    /*Start of Valid test for getPostalRateLetterMail*/
 
     @Test
     public void getPostalRateLetterMailTest1() throws Exception{
@@ -992,14 +1003,33 @@ public class CalculatorTest {
 
     }
 
+    /*End of Valid test for getPostalRateLetterMail*/
+
+    /*Start of Valid test for checkPostalCode*/
+
+    @Test
+    public void checkPostalCodeTest1() throws Exception {
+
+        boolean answer = true;
+        Calculator cal = new Calculator();
+        assertEquals(cal.checkPostalCode("H5G5K7"), answer);
 
 
 
+    }
+
+    @Test
+    public void checkPostalCodeTest2() throws Exception {
+
+        boolean answer = true;
+        Calculator cal = new Calculator();
+        assertEquals(cal.checkPostalCode("H5G 5K7"), answer);
 
 
 
+    }
 
 
-
+    /*End of Valid test for checkPostalCode*/
 
 }
