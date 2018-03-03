@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // setting up ui and variables
-    private void setUpVariables() {
+    public void setUpVariables() {
         calculator = new Calculator();
         from_et = (EditText) findViewById(R.id.from_postalcode);
         to_et = (EditText) findViewById(R.id.to_postalcode);
@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean check_inputs(String str_length , String str_width , String str_height , String str_weight, String str_from , String str_to) {
         boolean checked = false;
+        calculator = new Calculator();
         if (calculator.checkDimensions(str_length , str_width , str_height) && calculator.checkWeight(str_weight) && calculator.checkPostalCode(str_from) && calculator.checkPostalCode(str_to)) {
             checked = true;
         }

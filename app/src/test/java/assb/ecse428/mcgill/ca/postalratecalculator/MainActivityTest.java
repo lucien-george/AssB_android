@@ -1,6 +1,11 @@
 package assb.ecse428.mcgill.ca.postalratecalculator;
 
+import android.os.Bundle;
+
 import org.junit.Test;
+
+import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 /**
  * Created by Michael on 3/2/2018.
@@ -9,21 +14,23 @@ import org.junit.Test;
 public class MainActivityTest {
 
     @Test
-    public void check_inputsTest() throws Exception{
-   /*     boolean answer = true;
-        Bundle bundle = new Bundle();
+    public void check_inputsTest(){
+        boolean answer = true;
         MainActivity mainActivity = new MainActivity();
-        mainActivity.onCreate(bundle);
-        mainActivity.setUpVariables();
+        assertEquals(mainActivity.check_inputs("150" , "100" , "4" , "30" , "H3G2A5" , "A0A1B4") , answer);
+    }
 
-        mainActivity.from_et.setText("H2P3K8");
-        mainActivity.to_et.setText("H2P3K9");
-        mainActivity.length_et.setText("10");
-        mainActivity.width_et.setText("10");
-        mainActivity.height_et.setText("10");
-        mainActivity.weight_et.setText("100");*/
-      //  assertEquals(mainActivity.check_inputs(),answer);
+    @Test
+    public void check_inputsTestFailedTo(){
+        boolean answer = false;
+        MainActivity mainActivity = new MainActivity();
+        assertEquals(mainActivity.check_inputs("150" , "100" , "4" , "30" , "H3G2A5" , "QQ1B32") , answer);
+    }
 
-
+    @Test
+    public void check_inputsTestFailedFrom(){
+        boolean answer = false;
+        MainActivity mainActivity = new MainActivity();
+        assertEquals(mainActivity.check_inputs("150" , "100" , "4" , "30" , "11knsls" , "A0A1B4") , answer);
     }
 }
