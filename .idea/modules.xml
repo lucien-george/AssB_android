@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/AssB_android.iml" filepath="$PROJECT_DIR$/.idea/AssB_android.iml" />
-      <module fileurl="file://C:\Users\User\androidProjects\AssB_android\PostalRateCalculator.iml" filepath="C:\Users\User\androidProjects\AssB_android\PostalRateCalculator.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

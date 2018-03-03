@@ -27,6 +27,7 @@ public class Calculator {
     public enum Stamp {
         BOOKLET , METER_POSTAL_INDICIA , SINGLE_STAMP
     }
+
     public LetterMail getLetterMailType(String length , String width , String height , String weight) {
         int length_int = Integer.parseInt(length);
         int width_int = Integer.parseInt(width);

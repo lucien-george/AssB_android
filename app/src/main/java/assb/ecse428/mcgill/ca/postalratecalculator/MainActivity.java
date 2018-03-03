@@ -102,23 +102,31 @@ public class MainActivity extends AppCompatActivity {
         builder.create().show();
     }
 
-    public boolean check_inputs() {
+    public boolean check_inputs(String str_length , String str_width , String str_height , String str_weight, String str_from , String str_to) {
         boolean checked = false;
-        String str_length = length_et.getText().toString();
-        String str_width = width_et.getText().toString();
-        String str_height = height_et.getText().toString();
-        String str_weight = weight_et.getText().toString();
-        String str_from = from_et.getText().toString();
-        String str_to = to_et.getText().toString();
         if (calculator.checkDimensions(str_length , str_width , str_height) && calculator.checkWeight(str_weight) && calculator.checkPostalCode(str_from) && calculator.checkPostalCode(str_to)) {
             checked = true;
         }
         return checked;
     }
 
+//    public boolean check_inputs() {
+//        boolean checked = false;
+//        String str_length = length_et.getText().toString();
+//        String str_width = width_et.getText().toString();
+//        String str_height = height_et.getText().toString();
+//        String str_weight = weight_et.getText().toString();
+//        String str_from = from_et.getText().toString();
+//        String str_to = to_et.getText().toString();
+//        if (calculator.checkDimensions(str_length , str_width , str_height) && calculator.checkWeight(str_weight) && calculator.checkPostalCode(str_from) && calculator.checkPostalCode(str_to)) {
+//            checked = true;
+//        }
+//        return checked;
+//    }
+
     // action handler for button click
     public void getRate(View view) {
-        if (check_inputs()) {
+        if (check_inputs(length_et.getText().toString() , width_et.getText().toString() , height_et.getText().toString() , weight_et.getText().toString() , from_et.getText().toString() , to_et.getText().toString())) {
             String str_length = length_et.getText().toString();
             String str_width = width_et.getText().toString();
             String str_height = height_et.getText().toString();
