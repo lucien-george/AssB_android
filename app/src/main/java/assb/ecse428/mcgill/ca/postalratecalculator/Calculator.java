@@ -95,7 +95,6 @@ public class Calculator {
                         rate = 1.20f;
                     }
                 }
-
                 if(weight_int == 0){
                     rate = 0;
                 }
@@ -135,11 +134,20 @@ public class Calculator {
                         rate = 4.87f;
                     }
                 }
-
                 if(weight_int == 0){
                     rate = 0;
                 }
-
+            }
+            else {
+                if(stamp.equals(Stamp.BOOKLET) || stamp.equals(Stamp.SINGLE_STAMP)) {
+                    rate = 4.74f;
+                }
+                else if(stamp.equals(Stamp.METER_POSTAL_INDICIA)) {
+                    rate = 4.36f;
+                }
+                if(weight_int == 0){
+                    rate = 0;
+                }
             }
         }
         else if (shippingType.equals(ShippingType.XPRESS)) {
@@ -168,7 +176,6 @@ public class Calculator {
                         rate = 2.00f * 1.20f;
                     }
                 }
-
                 if(weight_int == 0){
                     rate = 0;
                 }
@@ -208,14 +215,21 @@ public class Calculator {
                         rate = 2.00f * 4.87f;
                     }
                 }
-
-
                 if(weight_int == 0){
                     rate = 0;
                 }
             }
-
-
+            else {
+                if(stamp.equals(Stamp.BOOKLET) || stamp.equals(Stamp.SINGLE_STAMP)) {
+                    rate = 5.67f;
+                }
+                else if(stamp.equals(Stamp.METER_POSTAL_INDICIA)) {
+                    rate = 5.48f;
+                }
+                if(weight_int == 0){
+                    rate = 0;
+                }
+            }
         }
         else if (shippingType.equals(ShippingType.PRIORITY)) {
             if (letterMail.equals(LetterMail.LETTER)) {
@@ -243,7 +257,6 @@ public class Calculator {
                         rate = 2.00f * 1.20f;
                     }
                 }
-
                 if(weight_int == 0){
                     rate = 0;
                 }
@@ -284,6 +297,17 @@ public class Calculator {
                     }
                 }
 
+                if(weight_int == 0){
+                    rate = 0;
+                }
+            }
+            else {
+                if(stamp.equals(Stamp.BOOKLET) || stamp.equals(Stamp.SINGLE_STAMP)) {
+                    rate = 7.84f;
+                }
+                else if(stamp.equals(Stamp.METER_POSTAL_INDICIA)) {
+                    rate = 7.62f;
+                }
                 if(weight_int == 0){
                     rate = 0;
                 }
